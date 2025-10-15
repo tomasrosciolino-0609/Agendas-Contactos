@@ -1,0 +1,13 @@
+<p>contacts-page works!</p>
+<div>
+    <span>Nombre</span>
+    <span>Telefonos</span>
+    <span>Email</span>
+    <span>Grupos</span>
+    <span>Acciones</span>
+</div>
+<ul>
+@for (contacto of Contactos; track $index) {
+    <app-contact-list-item [contacto]="contacto"></app-contact-list-item>
+}
+</ul>
