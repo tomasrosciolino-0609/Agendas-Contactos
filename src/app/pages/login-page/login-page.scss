@@ -1,75 +1,135 @@
-*{
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(45deg, #1e293b, #0f172a);
     margin: 0;
-    padding: 0;
+    color: #e2e8f0;
+}
+
+.login-container {
+    background-color: #1a2233;
+    padding: 40px 35px; 
+    border-radius: 16px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 400px;
     box-sizing: border-box;
+    border: 1px solid #334155;
 }
 
-body{
-  margin: 0; 
-  height: 100vh; 
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url(https://images.unsplash.com/photo-1557683316-973673baf926?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9uZG8lMjBkZWdyYWRhZG98ZW58MHx8MHx8fDA%3D);
+.login-container form {
+    display: flex;
+    flex-direction: column;
 }
 
-
-.login-form{
-    width: 400px;
-    height: 400px;   
-    background-color: #24303c;
-    padding: 30px;
-    margin: auto;
-    margin-top: 100px;
-    border-radius: 4px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: white;
-    box-shadow: 7px 13px 37px #000;
-
+.login-container h3 {
+    color: #f8fafc;
+    margin-top: 0;
+    margin-bottom: 40px; 
+    text-align: center; 
+    font-size: 26px; 
+    font-weight: 500;
 }
 
-.login-form h4{
-    font-size: 22px;
-    margin-bottom: 40px;
-    
+.login-container label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
 }
 
-.controls{
+.login-container input {
     width: 100%;
-    background-color: #24303c;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 16px;
-    border: 1px solid #1f53c5;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 18px;
-
-}
-
-.login-form p{
-    height: 40px;
-    text-align: center;
-    font-size: 18px ;
-    line-height: 30px;
-}
-
-.login-form a{
-    color: white;
-    text-decoration: none;
-}
-
-.login-form a:hover{
-color: white;
-text-decoration: underline;
-}
-
-.boton-login{
-    width: 100%;
-    background-color: #1f53c5;
-    border: none;
-    padding: 12px;
-    color: white;
-    margin: 16px, 0;
+    padding: 16px; 
+    margin-bottom: 20px;
+    background-color: #293548;
+    border: 1px solid #475569;
+    border-radius: 10px; 
+    color: #f8fafc;
     font-size: 16px;
-    margin-top: 40px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.login-container input::placeholder {
+    color: #94a3b8;
+}
+
+.login-container input:focus {
+    outline: none;
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2); 
+}
+
+
+.login-button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 15px;
+    background-color: #3b82f6;
+    border: none;
+    border-radius: 10px; 
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500; 
+    letter-spacing: 0.5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.login-button:hover {
+    background-color: #2563eb;
+}
+
+.login-button:active {
+    transform: scale(0.98);
+}
+
+.error {
+    color: #f43f5e;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+
+
+.register-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.register-container p {
+    display: inline;
+    margin-right: 5px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.register-container a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.register-container a:hover {
+    color: #7dd3fc;
+    text-decoration: underline;
+}
+
+app-spinner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}

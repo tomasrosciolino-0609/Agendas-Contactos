@@ -41,7 +41,7 @@ export const routes: Routes = [
 
     },
     {
-        path: "Register",
+        path: "register",
         component: Register,
 
     },

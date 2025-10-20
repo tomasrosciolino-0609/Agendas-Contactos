@@ -30,7 +30,7 @@ export class LoginPage {
     }
 
     this.isLoading = true;
-    try {
+     
       const res = await this.authService.login(form.value);
 
       const result: any = res;
@@ -39,13 +39,7 @@ export class LoginPage {
         await this.router.navigate(['/']);
       } else {
         this.errorLogin = true;
+        this.isLoading = false;
       }
-    } catch (err) {
-      console.error(err);
-      this.errorLogin = true;
-    } finally {
-      this.isLoading = false;
-    }
-  }
-}
-// ...existing code...
+  
+  }}
