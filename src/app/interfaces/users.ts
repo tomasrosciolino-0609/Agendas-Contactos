@@ -1,9 +1,9 @@
-export interface Contact {
-    id:string,
-    firstName:string,
-    lastName:string,
-    adress:string,
-    email:string,
-    number:string,
-    company?:boolean,
+export interface UserT {
+    id: number,
+    firstName: string,
+    lastName: string,
+    userName: string,
+    password: string,
 }
+
+export type NewUser = Omit<UserT,"id">

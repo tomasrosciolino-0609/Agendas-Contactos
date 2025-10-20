@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ContactListItem } from '../../components/contact-list-item/contact-list-item';
-import{Contact} from '../../interfaces/users'
+import { ContactT } from '../../interfaces/contact-type';
+import { ContactService } from '../../services/contacts-service';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-contacts-page',
@@ -10,6 +12,11 @@ import{Contact} from '../../interfaces/users'
   styleUrl: './contacts-page.scss'
 })
 export class ContactsPage {
-  Contactos: Contact[] = []
+  ngOnInit(): void {
+    this.contactService.getContacts();
+  }
+
+  authService = inject(AuthService);
+  contactService = inject(ContactService)
 }
 

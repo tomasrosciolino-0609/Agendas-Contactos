@@ -1,5 +1,7 @@
-import { Component, input } from '@angular/core';
-import { Contact } from '../../interfaces/users';
+import { Component, inject, input } from '@angular/core';
+import { ContactT } from '../../interfaces/contact-type';
+import { ContactService } from '../../services/contacts-service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-list-item',
@@ -8,5 +10,21 @@ import { Contact } from '../../interfaces/users';
   styleUrl: './contact-list-item.scss'
 })
 export class ContactListItem {
-  contacto = input.required<Contact>()
+  contact = input.required<ContactT>()
+  contactService = inject(ContactService)
+  ContactListItem: any;
+  openDeleteModal(){
+      Swal.fire({
+        title: "Desea eliminar el contacto?",
+        showDenyButton: true,
+        showCancelButton: true,
+        showConfirmButton: false,
+        cancelButtonText: "Cancelar",
+        denyButtonText: `Eliminar`
+      }).then((result) => {
+        if (result.isDenied) {
+          this.contactService.deleteContact(this.contact().id);
+        }
+      });
+  }
 }

@@ -5,6 +5,7 @@ import { ContactsPage } from './pages/contacts-page/contacts-page';
 import { LoggedLayout } from './layout/logged-layout/logged-layout';
 import { ContactsDetailsPage } from './pages/contacts-details-page/contacts-details-page';
 import { Register } from './pages/register/register';
+import { NewContact } from './pages/new-contact/new-contact';
 
 export const routes: Routes = [
     {
@@ -18,14 +19,23 @@ export const routes: Routes = [
         component:LoggedLayout,
         children:[
             {
-              path: "contacts",
+              path: "",
               component: ContactsPage,  
             },
             {
                 path:"contacts/:id",
                 component: ContactsDetailsPage
             },
-
+    
+            {
+                path:"new-contact",
+                component: NewContact
+            },
+            {
+                path: "edit-contact/:idContacto",
+                component: NewContact
+            },
+            
         ]
 
 
@@ -35,4 +45,5 @@ export const routes: Routes = [
         component: Register,
 
     },
+    
 ];
