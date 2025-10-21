@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 import { LoginPage } from './pages/login-page/login-page';
 import { ContactsPage } from './pages/contacts-page/contacts-page';
 import { LoggedLayout } from './layout/logged-layout/logged-layout';
-import { ContactsDetailsPage } from './pages/contacts-details-page/contacts-details-page';
+import { ContactDetails } from './pages/contacts-details-page/contacts-details-page';
 import { Register } from './pages/register/register';
 import { NewContact } from './pages/new-contact/new-contact';
 
@@ -24,7 +24,7 @@ export const routes: Routes = [
             },
             {
                 path:"contacts/:id",
-                component: ContactsDetailsPage
+                component: ContactDetails
             },
     
             {

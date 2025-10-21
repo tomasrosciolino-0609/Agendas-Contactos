@@ -1,1 +1,39 @@
-<p>contacts-details-page works!</p>
+
+<div class="conteiner-grande">
+  @if (contact) {
+    <div class="tarjeta">
+      <div class="header">
+        <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>
+        @if (contact.isFavorite) {
+          <div class="favorite">★</div>
+        }
+      </div>
+
+      <div class="details">
+        <div class="item">
+          <span class="type">Teléfono:</span>
+          <span class="dato">{{ contact.number }}</span>
+        </div>
+        <div class="item">
+          <span class="type">Email:</span>
+          <span class="dato">{{ contact.email }}</span>
+        </div>
+        <div class="item">
+          <span class="type">Dirección:</span>
+          <span class="dato">{{ contact.address }}</span>
+        </div>
+        <div class="item">
+          <span class="type">Compañía:</span>
+          <span class="dato">{{ contact.company }}</span>
+        </div>
+      </div>
+      
+      <div class="botones">
+        <a class="boton-contactos" routerLink="/">Contactos</a>
+      </div>
+    </div>
+  } @else {
+    <p>Cargando...</p>
+  }
+</div>
+

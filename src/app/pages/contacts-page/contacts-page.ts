@@ -4,6 +4,7 @@ import { ContactListItem } from '../../components/contact-list-item/contact-list
 import { ContactT } from '../../interfaces/contact-type';
 import { ContactService } from '../../services/contacts-service';
 import { AuthService } from '../../services/auth-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-contacts-page',
