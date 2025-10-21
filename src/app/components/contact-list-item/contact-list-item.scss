@@ -1,0 +1,87 @@
+:host {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr 1fr 1.5fr;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    border-bottom: 1px solid #334155; 
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+:host(:hover) {
+    background-color: #28364a; 
+}
+
+:host(:last-child) {
+    border-bottom: none;
+}
+
+.contact-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    color: #f1f5f9; 
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #3b82f6; 
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.contact-data {
+    color: #94a3b8; 
+}
+
+.contact-favorite svg {
+    stroke: #94a3b8; 
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.contact-favorite svg:hover {
+    fill: #facc15; 
+    stroke: #facc15;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    background: none;
+    border: 1px solid #334155; 
+    color: #94a3b8;           
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-edit:hover {
+    background-color: #3b82f6; 
+    border-color: #3b82f6;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #ef4444; 
+    border-color: #ef4444;
+    color: white;
+}

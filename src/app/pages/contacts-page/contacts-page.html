@@ -1,12 +1,25 @@
-<div>
-    <span>Nombre</span>
-    <span>Telefonos</span>
-    <span>Email</span>
-    <span>Grupos</span>
-    <span>Acciones</span>
+<div class="contacts-container">
+  <div class="contacts-header">
+    <h2>Contactos</h2>
+    <button class="add-contact-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      <span>Nuevo Contacto</span>
+    </button>
+  </div>
+
+  <div class="contact-list">
+    <div class="contact-list-header">
+      <span>Nombre y apellido </span>
+      <span>Teléfono</span>
+      <span>Email</span>
+      <span>Favorito</span>
+      <span>Acciones</span>
+    </div>
+    
+    <div class="contact-list-body">
+      @for (contacto of contactService.contacts; track $index) {
+        <app-contact-list-item [contact]="contacto"></app-contact-list-item>
+      }
+    </div>
+  </div>
 </div>
-<ul>
-@for (contacto of contactService.contacts; track $index) {
-    <app-contact-list-item [contact]="contacto"></app-contact-list-item>
-}
-</ul>
