@@ -10,15 +10,19 @@ import { Router } from '@angular/router';
   templateUrl: './new-contact.html',
   styleUrl: './new-contact.scss'
 })
-export class NewContact implements OnInit{
+export class NewContact implements OnInit {
   contactService = inject(ContactService);
   router = inject(Router);
   idContacto = input<number>();
-  contactoOriginal: ContactT|undefined = undefined;
+  contactoOriginal: ContactT | undefined = undefined;
   form = viewChild<NgForm>('newContactForm');
 
+  
+  isSubmitting = false;
+
   async ngOnInit() {
-    if (this.idContacto()){
+    
+    if (this.idContacto()) {
       this.contactoOriginal = await this.contactService.getContactsById(this.idContacto()!);
       this.form()?.setValue({
         firstName: this.contactoOriginal!.firstName,
@@ -33,31 +37,42 @@ export class NewContact implements OnInit{
     }
   }
 
-  async handleFormSubmission(form:NgForm){
-    const contactData: NewContactT = {
-      firstName: form.value.firstName,
-      lastName: form.value.lastName,
-      address: form.value.address,
-      email: form.value.email,
-      image: form.value.image,
-      number: form.value.number,
-      company: form.value.company,
-      isFavorite: form.value.isFavorite === true,
-    }
+ 
+  async handleFormSubmission(form: NgForm) {
     
-    if (this.idContacto()){
-      await this.contactService.editContact({...contactData, id: this.idContacto()!.toString()});
-      if (this.contactoOriginal?.isFavorite !== contactData.isFavorite) {
-        await this.contactService.setFavourite(this.idContacto()!);
+    if (form.invalid) return;
+
+    this.isSubmitting = true; 
+
+    try {
+      const contactData: NewContactT = {
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        address: form.value.address,
+        email: form.value.email,
+        image: form.value.image,
+        number: form.value.number,
+        company: form.value.company,
+        isFavorite: form.value.isFavorite === true,
       }
 
-    } else {
-      const contactoCreado = await this.contactService.createContact(contactData);
-      if (contactData.isFavorite === true) {
-        await this.contactService.setFavourite(contactoCreado.id);
+      if (this.idContacto()) {
+        await this.contactService.editContact({ ...contactData, id: this.idContacto()!.toString() });
+        if (this.contactoOriginal?.isFavorite !== contactData.isFavorite) {
+          await this.contactService.setFavourite(this.idContacto()!);
+        }
+      } else {
+        const contactoCreado = await this.contactService.createContact(contactData);
+        if (contactData.isFavorite === true) {
+          await this.contactService.setFavourite(contactoCreado.id);
+        }
       }
+
+      this.router.navigate(["/"]);
+    } catch (error) {
+      console.error("Error al procesar el formulario:", error);
+    } finally {
+      this.isSubmitting = false; 
     }
-    
-    this.router.navigate(["/"]);
   }
 }
