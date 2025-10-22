@@ -6,17 +6,21 @@ import { LoggedLayout } from './layout/logged-layout/logged-layout';
 import { ContactDetails } from './pages/contacts-details-page/contacts-details-page';
 import { Register } from './pages/register/register';
 import { NewContact } from './pages/new-contact/new-contact';
+import { onlyPublicUserGuard } from './guards/only-public-users-guard';
+import { onlyLoggedUserGuard } from './guards/only-logged-in-guard';
 
 export const routes: Routes = [
     {
         path: "login",
         component: LoginPage,
+        canActivate: [onlyPublicUserGuard],
 
     },
     
     {
         path:"",
         component:LoggedLayout,
+        canActivateChild: [onlyLoggedUserGuard],
         children:[
             {
               path: "",
@@ -43,6 +47,7 @@ export const routes: Routes = [
     {
         path: "register",
         component: Register,
+        canActivate: [onlyPublicUserGuard]
 
     },
     
